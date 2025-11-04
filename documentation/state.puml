@@ -1,0 +1,4 @@
+@startuml
+[*] -> Schlafe@enduml
+Schlafe -> Wach : Wecker
+@enduml
