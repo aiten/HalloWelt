@@ -24,3 +24,11 @@ jobs:
           chmod +x ./render.sh
           ./render.sh
         working-directory: documentation      
+      - uses: xresloader/upload-to-github-release@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "documentation/public/*.svg"
+          overwrite: true
+          verbose: true
+          update_latest_release: true   
