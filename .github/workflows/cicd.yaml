@@ -1,0 +1,22 @@
+name: Build and Deploy
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v5
+      - name: List files in the repository
+        run: |
+          pwd
+          ls ${{ github.workspace }}
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '25'
+          cache: 'maven'
+          cache-dependency-path: 'backend/pom.xml' # optional
+      - run: |
+          java -version
+          java Hello.java
+      - run: echo "🍏 This job's status is ${{ job.status }}."
